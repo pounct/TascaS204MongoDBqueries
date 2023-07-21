@@ -287,10 +287,117 @@ db.restaurants.find({"grades.score": {$gt:90}})
 
 9. Escriu una consulta per trobar els restaurants que tenen un score de més de 80 però menys que 100.
 
+db.restaurants.find( { $and: [ {"grades.score": {$gt:80} }, {"grades.score": {$lt:100}} ] } )
+
+{
+  _id: ObjectId("64bad7db3a8c601b7c6cb448"),
+  address: {
+    building: '65',
+    coord: [
+      -73.9782725,
+      40.7624022
+    ],
+    street: 'West   54 Street',
+    zipcode: '10019'
+  },
+  borough: 'Manhattan',
+  cuisine: 'American ',
+  grades: [
+    {
+      date: 2014-08-22T00:00:00.000Z,
+      grade: 'A',
+      score: 11
+    },
+    {
+      date: 2014-03-28T00:00:00.000Z,
+      grade: 'C',
+      score: 131
+    },
+    {
+      date: 2013-09-25T00:00:00.000Z,
+      grade: 'A',
+      score: 11
+    },
+    {
+      date: 2013-04-08T00:00:00.000Z,
+      grade: 'B',
+      score: 25
+    },
+    {
+      date: 2012-10-15T00:00:00.000Z,
+      grade: 'A',
+      score: 11
+    },
+    {
+      date: 2011-10-19T00:00:00.000Z,
+      grade: 'A',
+      score: 13
+    }
+  ],
+  name: "Murals On 54/Randolphs'S",
+  restaurant_id: '40372466'
+}
 
 
-Escriu una consulta per trobar els restaurants que es localitzen en valor de latitud menys de -95.754168.
-Escriu una consulta de MongoDB per a trobar els restaurants que no preparen cap cuisine de 'American' i la seva qualificació és superior a 70 i longitud inferior a -65.754168.
+
+10. Escriu una consulta per trobar els restaurants que es localitzen en valor de latitud menys de -95.754168.
+
+db.restaurants.find ( {"address.coord":{ $lt: -95.754168}} )
+
+{
+  _id: ObjectId("64bad7db3a8c601b7c6cb932"),
+  address: {
+    building: '3707',
+    coord: [
+      -101.8945214,
+      33.5197474
+    ],
+    street: '82 Street',
+    zipcode: '11372'
+  },
+  borough: 'Queens',
+  cuisine: 'American ',
+  grades: [
+    {
+      date: 2014-06-04T00:00:00.000Z,
+      grade: 'A',
+      score: 12
+    },
+    {
+      date: 2013-11-07T00:00:00.000Z,
+      grade: 'B',
+      score: 19
+    },
+    {
+      date: 2013-05-17T00:00:00.000Z,
+      grade: 'A',
+      score: 11
+    },
+    {
+      date: 2012-08-29T00:00:00.000Z,
+      grade: 'A',
+      score: 11
+    },
+    {
+      date: 2012-04-03T00:00:00.000Z,
+      grade: 'A',
+      score: 12
+    },
+    {
+      date: 2011-11-16T00:00:00.000Z,
+      grade: 'A',
+      score: 7
+    }
+  ],
+  name: 'Burger King',
+  restaurant_id: '40534067'
+}
+
+
+
+11. Escriu una consulta de MongoDB per a trobar els restaurants que no preparen cap cuisine de 'American' i la seva qualificació és superior a 70 i longitud inferior a -65.754168.
+
+
 Escriu una consulta per trobar els restaurants que no preparen cap cuisine de 'American' i van aconseguir un marcador més de 70 i localitzat en la longitud menys que -65.754168. Nota: Fes aquesta consulta sense utilitzar $and operador.
 Escriu una consulta per trobar els restaurants que no preparen cap cuisine de 'American' i van obtenir un punt de grau 'A' no pertany a Brooklyn. S'ha de mostrar el document segons la cuisine en ordre descendent.
 Escriu una consulta per trobar el restaurant_id, name, borough i cuisine per a aquells restaurants que contenen 'Wil' com les tres primeres lletres en el seu nom.
