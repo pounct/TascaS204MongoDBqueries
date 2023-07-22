@@ -456,22 +456,26 @@ db.restaurants.find ( {$and: [ {  cuisine: {$not:{$regex:"American*"}}} , { "gra
 
 
 12. Escriu una consulta per trobar els restaurants que no preparen cap cuisine de 'American' i van aconseguir un marcador més de 70 i localitzat en la longitud menys que -65.754168. Nota: Fes aquesta consulta sense utilitzar $and operador.
+latitude --> address.coord.0
+db.restaurants.find( { $and: [  {  cuisine: {$not:{$regex:"American*"}}} ,{"grades.score": {$gt:70} }, {"address.coord.0":{ $lt: -65.754168}} ] } )
+longitud --> address.coord.1
+db.restaurants.find( { $and: [  {  cuisine: {$not:{$regex:"American*"}}} ,{"grades.score": {$gt:70} }, {"address.coord.1":{ $lt: -65.754168}} ] } )
 
-db.restaurants.find( { $and: [  {  cuisine: {$not:{$regex:"American*"}}} ,{"grades.score": {$gt:70} }, {"address.coord":{ $lt: -65.754168}} ] } )
+
 
 
 13. Escriu una consulta per trobar els restaurants que no preparen cap cuisine de 'American' i van obtenir un punt de grau 'A' no pertany a Brooklyn. S'ha de mostrar el document segons la cuisine en ordre descendent.
 
-db.restaurants.find( { $and: [  {  cuisine: {$not:{$regex:"American*"}}} ,{"grades.grade": 'A' }, {"borough":{$not:{$regex:"Brooklyn*"}}} ] } ).sort( { "cuisine": -1 } )
-
-
+db.restaurants.find( { $and: [  {  cuisine: {$not:{$regex:"American*"}}} ,{"grades.grade": 'A' }, {"borough":{$not:{$regex:"Brooklyn.*"}}} ] } ).sort( { "cuisine": -1 } )
 
 
 
 
 14. Escriu una consulta per trobar el restaurant_id, name, borough i cuisine per a aquells restaurants que contenen 'Wil' com les tres primeres lletres en el seu nom.
 
-db.restaurants.find({ cuisine: {$regex:"Wil*"}} ,{restaurant_id:1,name:1,borough:1,cuisine:1})
+db.restaurants.find({ name: {$regex:"^Wil.*"}} ,{restaurant_id:1,name:1,borough:1,cuisine:1})
+
+
 
 
 15. Escriu una consulta per trobar el restaurant_id, name, borough i cuisine per a aquells restaurants que contenen 'ces' com les últimes tres lletres en el seu nom.
