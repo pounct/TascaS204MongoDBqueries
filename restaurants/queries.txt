@@ -500,7 +500,7 @@ db.restaurants.find({$and:[{borough: 'Bronx'},{$or:[{  cuisine: {$regex:"America
 
 18. Escriu una consulta per trobar el restaurant_id, name, borough i cuisine per a aquells restaurants que pertanyen a Staten Island o Queens o Bronx o Brooklyn.
 
-
+db.restaurants.find({ "borough": { "$in": [/Staten Island/,/Bronx/,/Queens/,/Brooklyn/] } } ,{restaurant_id:1,name:1,borough:1,cuisine:1,_id:0})
 
 
 
