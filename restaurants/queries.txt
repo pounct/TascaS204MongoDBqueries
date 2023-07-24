@@ -4,52 +4,13 @@ Tenim una col·lecció d'Objectes Restaurant a la ciutat de Nova York, i necessi
 
 db.restaurants.countDocuments()
 
+
+
+
 1. Escriu una consulta per mostrar tots els documents en la col·lecció Restaurants.
 
 db.restaurants.find()
-{
-  _id: ObjectId("64bad7db3a8c601b7c6cb2ea"),
-  address: {
-    building: '1007',
-    coord: [
-      -73.856077,
-      40.848447
-    ],
-    street: 'Morris Park Ave',
-    zipcode: '10462'
-  },
-  borough: 'Bronx',
-  cuisine: 'Bakery',
-  grades: [
-    {
-      date: 2014-03-03T00:00:00.000Z,
-      grade: 'A',
-      score: 2
-    },
-    {
-      date: 2013-09-11T00:00:00.000Z,
-      grade: 'A',
-      score: 6
-    },
-    {
-      date: 2013-01-24T00:00:00.000Z,
-      grade: 'A',
-      score: 10
-    },
-    {
-      date: 2011-11-23T00:00:00.000Z,
-      grade: 'A',
-      score: 9
-    },
-    {
-      date: 2011-03-10T00:00:00.000Z,
-      grade: 'B',
-      score: 14
-    }
-  ],
-  name: 'Morris Park Bake Shop',
-  restaurant_id: '30075445'
-}...
+
 
 
 
@@ -57,13 +18,7 @@ db.restaurants.find()
 
 db.restaurants.find({},{restaurant_id:1,name:1,borough:1,cuisine:1})
 
-{
-  _id: ObjectId("64bad7db3a8c601b7c6cb2ea"),
-  borough: 'Bronx',
-  cuisine: 'Bakery',
-  name: 'Morris Park Bake Shop',
-  restaurant_id: '30075445'
-}...
+
 
 
 
@@ -71,12 +26,6 @@ db.restaurants.find({},{restaurant_id:1,name:1,borough:1,cuisine:1})
 
 db.restaurants.find({},{restaurant_id:1,name:1,borough:1,cuisine:1,_id:0})
 
-{
-  borough: 'Bronx',
-  cuisine: 'Bakery',
-  name: 'Morris Park Bake Shop',
-  restaurant_id: '30075445'
-}...
 
 
 
@@ -84,112 +33,20 @@ db.restaurants.find({},{restaurant_id:1,name:1,borough:1,cuisine:1,_id:0})
 
 db.restaurants.find({},{restaurant_id:1,name:1,borough:1,"address.zipcode":1,_id:0})
 
-{
-  address: {
-    zipcode: '10462'
-  },
-  borough: 'Bronx',
-  name: 'Morris Park Bake Shop',
-  restaurant_id: '30075445'
-}
 
 
 
 5. Escriu una consulta per mostrar tots els restaurants que estan en el Bronx.
 
 db.restaurants.find({borough: 'Bronx'})
-{
-  _id: ObjectId("64bad7db3a8c601b7c6cb2ea"),
-  address: {
-    building: '1007',
-    coord: [
-      -73.856077,
-      40.848447
-    ],
-    street: 'Morris Park Ave',
-    zipcode: '10462'
-  },
-  borough: 'Bronx',
-  cuisine: 'Bakery',
-  grades: [
-    {
-      date: 2014-03-03T00:00:00.000Z,
-      grade: 'A',
-      score: 2
-    },
-    {
-      date: 2013-09-11T00:00:00.000Z,
-      grade: 'A',
-      score: 6
-    },
-    {
-      date: 2013-01-24T00:00:00.000Z,
-      grade: 'A',
-      score: 10
-    },
-    {
-      date: 2011-11-23T00:00:00.000Z,
-      grade: 'A',
-      score: 9
-    },
-    {
-      date: 2011-03-10T00:00:00.000Z,
-      grade: 'B',
-      score: 14
-    }
-  ],
-  name: 'Morris Park Bake Shop',
-  restaurant_id: '30075445'
-}...
+
+
 
 
 6. Escriu una consulta per mostrar els primers 5 restaurants que estan en el Bronx.
 
 db.restaurants.find({borough: 'Bronx'}).limit(5)
 
-{
-  _id: ObjectId("64bad7db3a8c601b7c6cb2ea"),
-  address: {
-    building: '1007',
-    coord: [
-      -73.856077,
-      40.848447
-    ],
-    street: 'Morris Park Ave',
-    zipcode: '10462'
-  },
-  borough: 'Bronx',
-  cuisine: 'Bakery',
-  grades: [
-    {
-      date: 2014-03-03T00:00:00.000Z,
-      grade: 'A',
-      score: 2
-    },
-    {
-      date: 2013-09-11T00:00:00.000Z,
-      grade: 'A',
-      score: 6
-    },
-    {
-      date: 2013-01-24T00:00:00.000Z,
-      grade: 'A',
-      score: 10
-    },
-    {
-      date: 2011-11-23T00:00:00.000Z,
-      grade: 'A',
-      score: 9
-    },
-    {
-      date: 2011-03-10T00:00:00.000Z,
-      grade: 'B',
-      score: 14
-    }
-  ],
-  name: 'Morris Park Bake Shop',
-  restaurant_id: '30075445'
-}... just 5
 
 
 
@@ -197,34 +54,6 @@ db.restaurants.find({borough: 'Bronx'}).limit(5)
 
 db.restaurants.find({borough: 'Bronx'}).skip(5).limit(5)
 
-{
-  _id: ObjectId("64bad7db3a8c601b7c6cb327"),
-  address: {
-    building: '658',
-    coord: [
-      -73.81363999999999,
-      40.82941100000001
-    ],
-    street: 'Clarence Ave',
-    zipcode: '10465'
-  },
-  borough: 'Bronx',
-  cuisine: 'American ',
-  grades: [
-    {
-      date: 2014-06-21T00:00:00.000Z,
-      grade: 'A',
-      score: 5
-    },
-    {
-      date: 2012-07-11T00:00:00.000Z,
-      grade: 'A',
-      score: 10
-    }
-  ],
-  name: 'Manhem Club',
-  restaurant_id: '40364363'
-}... skip 5 and just 5
 
 
 
@@ -232,54 +61,6 @@ db.restaurants.find({borough: 'Bronx'}).skip(5).limit(5)
 
 db.restaurants.find({"grades.score": {$gt:90}})
 
-{
-  _id: ObjectId("64bad7db3a8c601b7c6cb448"),
-  address: {
-    building: '65',
-    coord: [
-      -73.9782725,
-      40.7624022
-    ],
-    street: 'West   54 Street',
-    zipcode: '10019'
-  },
-  borough: 'Manhattan',
-  cuisine: 'American ',
-  grades: [
-    {
-      date: 2014-08-22T00:00:00.000Z,
-      grade: 'A',
-      score: 11
-    },
-    {
-      date: 2014-03-28T00:00:00.000Z,
-      grade: 'C',
-      score: 131
-    },
-    {
-      date: 2013-09-25T00:00:00.000Z,
-      grade: 'A',
-      score: 11
-    },
-    {
-      date: 2013-04-08T00:00:00.000Z,
-      grade: 'B',
-      score: 25
-    },
-    {
-      date: 2012-10-15T00:00:00.000Z,
-      grade: 'A',
-      score: 11
-    },
-    {
-      date: 2011-10-19T00:00:00.000Z,
-      grade: 'A',
-      score: 13
-    }
-  ],
-  name: "Murals On 54/Randolphs'S",
-  restaurant_id: '40372466'
-}...
 
 
 
@@ -287,54 +68,6 @@ db.restaurants.find({"grades.score": {$gt:90}})
 
 db.restaurants.find( { $and: [ {"grades.score": {$gt:80} }, {"grades.score": {$lt:100}} ] } )
 
-{
-  _id: ObjectId("64bad7db3a8c601b7c6cb448"),
-  address: {
-    building: '65',
-    coord: [
-      -73.9782725,
-      40.7624022
-    ],
-    street: 'West   54 Street',
-    zipcode: '10019'
-  },
-  borough: 'Manhattan',
-  cuisine: 'American ',
-  grades: [
-    {
-      date: 2014-08-22T00:00:00.000Z,
-      grade: 'A',
-      score: 11
-    },
-    {
-      date: 2014-03-28T00:00:00.000Z,
-      grade: 'C',
-      score: 131
-    },
-    {
-      date: 2013-09-25T00:00:00.000Z,
-      grade: 'A',
-      score: 11
-    },
-    {
-      date: 2013-04-08T00:00:00.000Z,
-      grade: 'B',
-      score: 25
-    },
-    {
-      date: 2012-10-15T00:00:00.000Z,
-      grade: 'A',
-      score: 11
-    },
-    {
-      date: 2011-10-19T00:00:00.000Z,
-      grade: 'A',
-      score: 13
-    }
-  ],
-  name: "Murals On 54/Randolphs'S",
-  restaurant_id: '40372466'
-}
 
 
 
@@ -342,54 +75,6 @@ db.restaurants.find( { $and: [ {"grades.score": {$gt:80} }, {"grades.score": {$l
 
 db.restaurants.find ( {"address.coord":{ $lt: -95.754168}} )
 
-{
-  _id: ObjectId("64bad7db3a8c601b7c6cb932"),
-  address: {
-    building: '3707',
-    coord: [
-      -101.8945214,
-      33.5197474
-    ],
-    street: '82 Street',
-    zipcode: '11372'
-  },
-  borough: 'Queens',
-  cuisine: 'American ',
-  grades: [
-    {
-      date: 2014-06-04T00:00:00.000Z,
-      grade: 'A',
-      score: 12
-    },
-    {
-      date: 2013-11-07T00:00:00.000Z,
-      grade: 'B',
-      score: 19
-    },
-    {
-      date: 2013-05-17T00:00:00.000Z,
-      grade: 'A',
-      score: 11
-    },
-    {
-      date: 2012-08-29T00:00:00.000Z,
-      grade: 'A',
-      score: 11
-    },
-    {
-      date: 2012-04-03T00:00:00.000Z,
-      grade: 'A',
-      score: 12
-    },
-    {
-      date: 2011-11-16T00:00:00.000Z,
-      grade: 'A',
-      score: 7
-    }
-  ],
-  name: 'Burger King',
-  restaurant_id: '40534067'
-}
 
 
 
@@ -397,65 +82,14 @@ db.restaurants.find ( {"address.coord":{ $lt: -95.754168}} )
 
 db.restaurants.find ( {$and: [ {  cuisine: {$not:{$regex:"American*"}}} , { "grades.score": {$gt:70}} ]} )
 
-{
-  _id: ObjectId("64bad7db3a8c601b7c6cb4e9"),
-  address: {
-    building: '345',
-    coord: [
-      -73.9864626,
-      40.7266739
-    ],
-    street: 'East 6 Street',
-    zipcode: '10003'
-  },
-  borough: 'Manhattan',
-  cuisine: 'Indian',
-  grades: [
-    {
-      date: 2014-09-15T00:00:00.000Z,
-      grade: 'A',
-      score: 5
-    },
-    {
-      date: 2014-01-14T00:00:00.000Z,
-      grade: 'A',
-      score: 8
-    },
-    {
-      date: 2013-05-30T00:00:00.000Z,
-      grade: 'A',
-      score: 12
-    },
-    {
-      date: 2013-04-24T00:00:00.000Z,
-      grade: 'P',
-      score: 2
-    },
-    {
-      date: 2012-10-01T00:00:00.000Z,
-      grade: 'A',
-      score: 9
-    },
-    {
-      date: 2012-04-06T00:00:00.000Z,
-      grade: 'C',
-      score: 92
-    },
-    {
-      date: 2011-11-03T00:00:00.000Z,
-      grade: 'C',
-      score: 41
-    }
-  ],
-  name: 'Gandhi',
-  restaurant_id: '40381295'
-}
 
 
 
 12. Escriu una consulta per trobar els restaurants que no preparen cap cuisine de 'American' i van aconseguir un marcador més de 70 i localitzat en la longitud menys que -65.754168. Nota: Fes aquesta consulta sense utilitzar $and operador.
+
 latitude --> address.coord.0
 db.restaurants.find( { $and: [  {  cuisine: {$not:{$regex:"American*"}}} ,{"grades.score": {$gt:70} }, {"address.coord.0":{ $lt: -65.754168}} ] } )
+
 longitud --> address.coord.1
 db.restaurants.find( { $and: [  {  cuisine: {$not:{$regex:"American*"}}} ,{"grades.score": {$gt:70} }, {"address.coord.1":{ $lt: -65.754168}} ] } )
 
